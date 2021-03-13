@@ -1,4 +1,4 @@
-# Linked lists in Ruby
+# Linked Lists in Ruby
 An implementation of the linked list data structure created using Ruby. Linked lists aren't required in Ruby as an array handles all of the operations that a linked list would be used for, so, this was created to gain a better understanding of the data structure.
 
 Running the tests.rb file shows the results of using each of the implemented methods on an example linked list and an empty linked list.
