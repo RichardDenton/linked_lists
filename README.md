@@ -16,5 +16,7 @@ Running the tests.rb file shows the results of using each of the implemented met
 * to_s represent your LinkedList objects as strings, so you can print them out and preview them in the console. The format should be: ( value ) -> ( value ) -> ( value ) -> nil
 * insert_at(value, index) that inserts a new node with the provided value at the given index.
 * remove_at(index) that removes the node at the given index.
+
 *Method names and descriptions copied from the Odin Project Curriculum page for this project*
+
 Created as part of the Odin Project's [Curriculum](https://www.theodinproject.com/courses/ruby-programming/lessons/linked-lists)
