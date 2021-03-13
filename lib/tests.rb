@@ -9,6 +9,7 @@ list.prepend(0)
 contains = 8
 insertIndex = 1
 insertValue = 50
+removeIndex = 1
 
 
 puts list.to_s
@@ -23,6 +24,8 @@ puts list.to_s
 puts "Pop: #{list.pop}"
 puts "Size: #{list.size} (after pop)"
 puts list.to_s
+puts "Remove index #{removeIndex}: #{list.remove_at(removeIndex)}"
+puts list.to_s
 
 list2 = LinkedList.new
 puts "\nTests for an empty list:"
@@ -36,4 +39,6 @@ puts "find(#{contains}): #{list2.find(contains)}"
 puts "Insert #{insertValue} at index #{insertIndex}: #{list2.insert_at(insertValue, insertIndex)}"
 puts "Pop: #{list2.pop}"
 puts "Size: #{list2.size} (after pop)"
+puts list2.to_s
+puts "Remove index #{removeIndex}: #{list2.remove_at(removeIndex)}"
 puts list2.to_s

@@ -108,6 +108,31 @@ class LinkedList
     value
   end
 
+  def remove_at(index)
+    return "index out of range" if @size == 0 or index > @size or index < 0
+    # pop if index is of last item
+    return self.pop if index == @size - 1
+    # handle removing the first node
+    if index == 0
+      node_value = @head.value
+      if @size == 1
+        @head = nil
+        @size -= 1
+        return node_value
+      end
+      @head = @head.next_node
+      @size -= 1
+      return node_value
+    end
+    # remove specified node for all other cases
+    delete_value = self.at(index)
+    previous_node = get_node_at(index - 1)
+    subsequent_node = get_node_at(index + 1)
+    previous_node.next_node = subsequent_node
+    @size -= 1
+    delete_value
+  end
+
   # Helper function for getting the last node object
   def get_last_node
     if @head
