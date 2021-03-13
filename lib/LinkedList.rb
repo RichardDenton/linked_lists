@@ -9,10 +9,7 @@ class LinkedList
 
   def append(value)
     if @head
-      node = @head
-      while node.next_node
-        node = node.next_node
-      end
+      node = get_last_node
       node.next_node = Node.new(value)
     else
       @head = Node.new(value)
@@ -37,26 +34,13 @@ class LinkedList
   end
 
   def tail
-    if @head
-      tail = @head
-      while tail.next_node
-        tail = tail.next_node
-      end
-    return tail.value
-    end
-    nil
+    return get_last_node.value if @head
+    return nil
   end
 
   def at(index)
-    if index < @size
-      node = @head
-      index.times do
-        node = node.next_node
-      end
-      node.value
-    else
-      "index out of range"
-    end
+    return self.get_node_at(index).value if self.get_node_at(index)
+    "index out of range"
   end
 
   def pop
@@ -100,6 +84,53 @@ class LinkedList
       return index if node.value == value
     end
     nil
+  end
+
+  def insert_at(value, index)
+    return "index out of range" if index > @size or index < 0
+    # append if inserting after last item
+    if index == size and size > 0
+      self.append(value)
+      return value
+    end
+    # prepend if inserting at index 0
+    if index == 0
+      self.prepend(value)
+      return value
+    end
+    # insert at specified index for all other cases
+    current_node = get_node_at(index)
+    previous_node = get_node_at(index -1)
+    new_node = Node.new(value)
+    new_node.next_node = current_node
+    previous_node.next_node = new_node
+    @size += 1
+    value
+  end
+
+  # Helper function for getting the last node object
+  def get_last_node
+    if @head
+      last_node = @head
+      while last_node.next_node
+        last_node = last_node.next_node
+      end
+    return last_node
+    end
+    nil
+  end
+
+  #Helper function for getting node object at specified index
+  def get_node_at(index)
+    if index < @size and index >= 0
+      node = @head
+      index.times do
+        node = node.next_node
+      end
+      node
+    else
+      nil
+    end
   end
 
   def to_s
